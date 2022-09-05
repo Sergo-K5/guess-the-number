@@ -1,0 +1,57 @@
+ def is_valid(n):
+        if n.isdigit() and 1 <= int(n) <= diapason+1:
+            return True
+        else:
+            return False
+def vvod_chisla():
+    while True:
+        global num_member
+        num_member = input('Введите число от 1 до ' + str(diapason) )
+        if is_valid(num_member):
+            num_member = int(num_member)
+            break
+        else:
+            print('А может быть все-таки введем целое число от 1 до ' + str(diapason))
+
+def ugadaika():
+    import random
+    print('Добро пожаловать в числовую угадайку')
+    global diapason 
+    diapason = int(input('В каком диапазоне от 1 до ... сформировать число'))
+    unknow_number = random.randrange(1,diapason+1)
+    vvod_chisla()
+
+        
+        
+    counter = 0   
+    while True:
+        if num_member < unknow_number:
+            print('Ваше число меньше загаданного, попробуйте еще разок')
+            vvod_chisla()
+            counter += 1
+            continue
+        if num_member > unknow_number:
+            print('Ваше число больше загаданного, попробуйте еще разок')
+            vvod_chisla()
+            counter += 1
+            continue 
+        if num_member == unknow_number:
+            print('Вы угадали, поздравляем!')
+            break
+    print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
+    print('Вы совершили', counter, 'попыток' )
+    
+ugadaika()
+
+while True:
+    answer = input('Хотите еще раз сыграть, введите да или нет')  
+    if answer.lower() == 'да':
+        ugadaika()
+        continue
+    elif answer.lower() == 'нет':
+        print('До скорых встреч')
+        break
+    else:
+        print('Введите да или нет если хотите продолжить')
+        continue
+        
